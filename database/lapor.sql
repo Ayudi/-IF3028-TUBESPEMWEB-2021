@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2019 at 09:01 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.0.13
+-- Generation Time: Dec 16, 2020 at 10:43 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,102 +25,46 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Table structure for table `simple_lapor`
 --
 
-CREATE TABLE `admin` (
-  `id_admin` int(11) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  `username` varchar(12) NOT NULL
+CREATE TABLE `simple_lapor` (
+  `id_lapor` int(11) NOT NULL,
+  `laporan` longtext NOT NULL,
+  `lampiran` varchar(50) NOT NULL,
+  `waktu` datetime NOT NULL,
+  `aspek` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Dumping data for table `simple_lapor`
 --
 
-INSERT INTO `admin` (`id_admin`, `password`, `username`) VALUES
-(1, '21232f297a57a5a743894a0e4a801fc3', 'admin');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `laporan`
---
-
-CREATE TABLE `laporan` (
-  `id_laporan` int(11) NOT NULL,
-  `nim` varchar(9) NOT NULL,
-  `hal` varchar(256) NOT NULL,
-  `lampiran` text NOT NULL,
-  `status` enum('MENUNGGU','BERHASIL') NOT NULL,
-  `cp` varchar(13) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `laporan`
---
-
-INSERT INTO `laporan` (`id_laporan`, `nim`, `hal`, `lampiran`, `status`, `cp`) VALUES
-(1, '14116097', 'Permohonan peringanan biaya uang kuliah tunggal', 'Program Studi Teknik Informatika.docx', 'BERHASIL', '082281718656'),
-(2, '14116097', 'Peniadaan hari tanpa asap di wilayah kampus', '', 'MENUNGGU', '082281718656');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mahasiswa`
---
-
-CREATE TABLE `mahasiswa` (
-  `nim` varchar(9) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  `prodi` varchar(24) NOT NULL,
-  `nama` varchar(32) NOT NULL,
-  `verif` enum('0','1') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mahasiswa`
---
-
-INSERT INTO `mahasiswa` (`nim`, `password`, `prodi`, `nama`, `verif`) VALUES
-('14116097', 'b0a787a82ffb983d64d1b835a263e607', 'Teknik Informatika', 'Yusuf Firmansyah W. P.', '1');
+INSERT INTO `simple_lapor` (`id_lapor`, `laporan`, `lampiran`, `waktu`, `aspek`) VALUES
+(51, 'Pak Lapor pak!!!!... kelas 207 kebanjiran', '(Edited) JTEIF Jadwal UAS Semester Ganjil 2020_202', '2020-12-16 16:38:30', 'Mahasiswa'),
+(52, 'Lapor min, terjadi perkelahian di atas rooftop', '8355-17187-1-PB.pdf', '2020-12-16 16:42:03', 'Dosen');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `admin`
+-- Indexes for table `simple_lapor`
 --
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_admin`);
-
---
--- Indexes for table `laporan`
---
-ALTER TABLE `laporan`
-  ADD PRIMARY KEY (`id_laporan`);
-
---
--- Indexes for table `mahasiswa`
---
-ALTER TABLE `mahasiswa`
-  ADD PRIMARY KEY (`nim`);
+ALTER TABLE `simple_lapor`
+  ADD PRIMARY KEY (`id_lapor`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table `simple_lapor`
 --
-ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `laporan`
---
-ALTER TABLE `laporan`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `simple_lapor`
+  MODIFY `id_lapor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
